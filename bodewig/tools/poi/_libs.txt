@@ -1,0 +1,21 @@
+https://poi.apache.org/download.html
+
+poi-bin-3.16-20170419.zip (28.49 MB, signature (.asc))
+MD5 checksum: c0b16803ee4ebdc1da1240c7fb28c997
+SHA1 checksum: 43672d02682bf5b88f01f35c5da6cf05b9d9d844
+
+https://www.apache.org/dyn/closer.lua/poi/release/bin/poi-bin-3.16-20170419.zip
+
+lib\commons-codec-1.10.jar
+lib\commons-collections4-4.1.jar
+lib\commons-logging-1.2.jar
+lib\junit-4.12.jar
+lib\log4j-1.2.17.jar
+ooxml-lib\curvesapi-1.04.jar
+ooxml-lib\xmlbeans-2.6.0.jar
+poi-3.16.jar
+poi-examples-3.16.jar
+poi-excelant-3.16.jar
+poi-ooxml-3.16.jar
+poi-ooxml-schemas-3.16.jar
+poi-scratchpad-3.16.jar
