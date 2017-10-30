@@ -63,8 +63,7 @@ public class Main {
 				csvFile = fc.getSelectedFile().getCanonicalPath();
 			}
 
-			//Map<String, QueueData<String>> vars = MapTools.<QueueData<String>>create();
-			Map<String, QueueData<String>> vars = getVars(csvFile);
+			csvToVars(csvFile);
 
 			final int rowcnt = 100;
 			final int colcnt = 30;
@@ -72,15 +71,15 @@ public class Main {
 			for(int rowidx = 0; rowidx < rowcnt; rowidx++) {
 				for(int colidx = 0; colidx < colcnt; colidx++) {
 					String cell = ed.getCellString(0, rowidx, colidx);
-					QueueData<String> qVar = vars.get(cell);
+					QueueData<String> q = _vars.get(cell);
 
-					if(qVar != null) {
-						String cellNew = qVar.poll();
+					if(q != null) {
+						cell = q.poll();
 
-						if(cellNew == null) {
-							cellNew = "";
+						if(cell == null) {
+							cell = "";
 						}
-						ed.setCellString(0, rowidx, colidx, cellNew);
+						ed.setCellString(0, rowidx, colidx, cell);
 					}
 				}
 			}
@@ -110,21 +109,19 @@ public class Main {
 		}
 	}
 
-	private Map<String, QueueData<String>> _vars;
+	private Map<String, QueueData<String>> _vars = MapTools.<QueueData<String>>create();
 
 	private void addVar(String key, String value) {
-		QueueData<String> qVar = _vars.get(key);
+		QueueData<String> q = _vars.get(key);
 
-		if(qVar == null) {
-			qVar = new QueueData<String>();
-			_vars.put(key, qVar);
+		if(q == null) {
+			q = new QueueData<String>();
+			_vars.put(key, q);
 		}
-		qVar.add(value);
+		q.add(value);
 	}
 
-	private Map<String, QueueData<String>> getVars(String csvFile) throws Exception {
-		_vars = MapTools.<QueueData<String>>create();
-
+	private void csvToVars(String csvFile) throws Exception {
 		CsvData csv = new CsvData();
 		csv.readFile(csvFile);
 		AutoTable<String> tbl = csv.getTable();
@@ -201,8 +198,6 @@ public class Main {
 		}
 
 		addVar("$TKT", minuteToSTime(mTotalK));
-
-		return _vars;
 	}
 
 	private int sTimeToMinute(String sTime) {
