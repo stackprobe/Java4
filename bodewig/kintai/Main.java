@@ -25,6 +25,7 @@ public class Main {
 		catch(Throwable e) {
 			e.printStackTrace();
 		}
+		System.exit(0);
 	}
 
 	private void main2() throws Exception {
