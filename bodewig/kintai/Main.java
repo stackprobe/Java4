@@ -50,7 +50,8 @@ public class Main {
 				JFileChooser fc = new JFileChooser(ioHomeDir);
 
 				fc.setFileFilter(new FileNameExtensionFilter("CSV ファイル (*.csv)", "csv"));
-				fc.setSelectedFile(new File(ioHomeDir, "kinmujisseki.csv"));
+				fc.setSelectedFile(new File("C:/etc/sumire/仕事関係/kinmujisseki.csv")); // zantei
+				//fc.setSelectedFile(new File(ioHomeDir, "kinmujisseki.csv"));
 				fc.setDialogTitle("勤務表(csv)を選択してね");
 
 				int ret = fc.showOpenDialog(null);
@@ -180,7 +181,7 @@ public class Main {
 				int mSt = sTimeToMinute(sTimeSt);
 				int mEd = sTimeToMinute(sTimeEd);
 
-				int mY = 60; // 固定
+				int mY = mSt < sTimeToMinute("12:00") && sTimeToMinute("13:00") < mEd ? 60 : 0;
 				int mK = mEd - mSt - mY;
 
 				sTimeSt = minuteToSTime(mSt);
