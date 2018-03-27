@@ -163,6 +163,9 @@ public class Main {
 			String sM = tDate.get(0);
 			String sD = tDate.get(1);
 
+			sM = "" + Integer.parseInt(sM);
+			sD = "" + Integer.parseInt(sD);
+
 			sDate = sM + " 月 " + sD + " 日";
 
 			String sTimeSt = tbl.get(6, y);
