@@ -130,6 +130,6 @@ public class ExcelData {
 	public void setCellString(int sheetIndex, int rowIndex, int colIndex, String value) {
 		Cell cell = getCell(sheetIndex, rowIndex, colIndex);
 
-		cell.setCellValue(value); // XXX
+		cell.setCellValue(value); // HACK
 	}
 }
